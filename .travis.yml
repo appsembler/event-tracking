@@ -4,20 +4,14 @@ language: python
 
 python:
   - 3.5
-  - 3.6
+  - 3.8
 
 env:
-  - TOXENV=django111
-  - TOXENV=django20
-  - TOXENV=django21
   - TOXENV=django22
 
-
 matrix:
-  include:
-    - python: 2.7
-      env: TOXENV=django111
-
+  allow_failures:
+    - python: 3.8
 
 install:
   - make test.setup install
