@@ -36,9 +36,15 @@ class SegmentTopLevelPropertiesProcessor(object):
     def __call__(self, event):
         try:
             for key, val in event['data'].items():
-                try:
-                    event[key].update(event['data'][key])
-                except (KeyError, AttributeError):
+                if key in event:
+                    try:
+                        event[key].update(event['data'][key])  # dict
+                    except AttributeError:
+                        try:
+                            event[key].extend(event['data'][key])  # list
+                        except AttributeError:
+                            event[key] = val
+                else:
                     event[key] = val
         except KeyError:  # no 'data'
             pass
