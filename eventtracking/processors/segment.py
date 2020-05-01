@@ -1,9 +1,5 @@
 """Process events to be more useful with Segment backend"""
 
-from __future__ import absolute_import
-
-from eventtracking.processors.exceptions import EventEmissionExit
-
 
 class SegmentTopLevelPropertiesProcessor(object):
     """
