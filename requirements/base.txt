@@ -4,7 +4,7 @@
 #
 #    make upgrade
 #
-django==1.11.26 ; python_version == "2.7"
+django==1.11.29 ; python_version > "3"
 pymongo==3.9.0
 pytz==2019.3
 six==1.13.0
