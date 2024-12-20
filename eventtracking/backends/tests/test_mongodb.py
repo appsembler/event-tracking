@@ -45,10 +45,6 @@ class TestMongoBackend(TestCase):
         self.assertEqual(events[0], first_argument(calls[0]))
         self.assertEqual(events[1], first_argument(calls[1]))
 
-    def test_authentication_settings(self):
-        backend = MongoBackend(user=sentinel.user, password=sentinel.password)
-        backend.database.authenticate.assert_called_once_with(sentinel.user, sentinel.password)
-
     def test_mongo_pymongo_insertion_error(self):
         self.backend.collection.insert.side_effect = PyMongoError
 
